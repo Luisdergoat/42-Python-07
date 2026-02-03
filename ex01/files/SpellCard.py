@@ -79,11 +79,20 @@ class SpellCard(Card):
                 return f"{target.name} took 5 damage."
             elif self.effect == "buff":
                 target.attack += 3
+                target.effect = "buff"
                 self.available_one_time = False
                 return f"{target.name}'s attack increased by 3."
             elif self.effect == "debuff":
                 target.attack -= 3
+                target.effect = "debuff"
                 self.available_one_time = False
                 return f"{target.name}'s attack decreased by 3."
             else:
                 return "This spell has no effect."
+
+    def resolve_effect(self, target: str):
+        if isinstance(target, CreatureCard):
+            if target.effect == "buff":
+                target.attack -= 3
+            if target.effect == "debuff":
+                target.attack += 3

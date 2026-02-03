@@ -13,5 +13,6 @@ class ArtifactCard(Card):
         self.effect = 0
 
     def init_durability_effect(self, durability: int, effect: str) -> None:
-        pass  # ich brauch noch sooo viel initialisierung fue die effecte und shit
-    # dazu ganz viele sachen noch weiter rein wie play und get status und shit 
+        self.durability = durability
+
+        self.effect = effect
